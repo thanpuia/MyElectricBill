@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     EditText firstRoundEditText;
     EditText secondRoundEditText;
     EditText thirdRoundEditText;
+    EditText fixedChargeEditText;
 
     Double FIRST_ROUND;
     Double SECOND_ROUND;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     Double userBillUnit;
     Double userBillAmount;
+    Double fixedCharge;
 
     int COUNTER;
     Random rand = new Random();
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         firstRoundEditText = findViewById(R.id.first_round);
         secondRoundEditText = findViewById(R.id.second_round);
         thirdRoundEditText = findViewById(R.id.third_round);
+        fixedChargeEditText = findViewById(R.id.fixed_charge);
 
         settingsLayout = findViewById(R.id.settings);
         settingsTextView = findViewById(R.id.settings_label);
@@ -67,11 +70,14 @@ public class MainActivity extends AppCompatActivity {
         SECOND_ROUND = Double.valueOf(secondRoundEditText.getText().toString());//5.50;
         THIRD_ROUND = Double.valueOf(thirdRoundEditText.getText().toString());//5.90;
 
+        fixedCharge = Double.valueOf(fixedChargeEditText.getText().toString());
+
         try {
             userBillUnit = Double.valueOf(billUnit.getText().toString());
         }catch (Exception e){
             userBillUnit = 0.0;
         }
+
         if(userBillUnit<=100){
             firstRound();
         }else if(userBillUnit >= 101 && userBillUnit <= 200){
@@ -81,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
         }else{
             myDefault();
         }
+
+       userBillAmount = userBillAmount + fixedCharge;
 
         billAmount.setText("Total Bill= Rs."+String.valueOf(userBillAmount));
 
@@ -99,10 +107,14 @@ public class MainActivity extends AppCompatActivity {
     private void firstRound() {
         userBillAmount = userBillUnit * FIRST_ROUND;
     }
+
     private void secondRound() {
         userBillAmount = 100 * FIRST_ROUND;
-        userBillAmount = (100-userBillUnit)*SECOND_ROUND + userBillAmount;
+        Log.d("TAG","2 slab:"+userBillAmount);
+
+        userBillAmount = Math.abs(100-userBillUnit)*SECOND_ROUND + userBillAmount;
     }
+
     private void thirdRound() {
         userBillAmount = 100 * FIRST_ROUND;
         userBillAmount = 100 * SECOND_ROUND + userBillAmount;
