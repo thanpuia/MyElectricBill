@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Bill Unit"/>
+    <EditText
+        android:id="@+id/bill_unit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Enter your Bill Unit"/>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Calculate"
+        android:onClick="calculateClick"/>
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/bill_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Total Bill: Rs. 000"/>
+
+    <TextView
+        android:id="@+id/settings_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Energy Charge - Slab Wise"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/settings"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/first_round_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1- 100" />
+
+        <EditText
+            android:id="@+id/first_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/first_round_label"
+            android:hint="Fisrt Round"
+            android:inputType="numberDecimal"
+            android:text="4.80" />
+
+        <TextView
+            android:id="@+id/second_round_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/first_round"
+            android:text="101-200" />
+
+        <EditText
+            android:id="@+id/second_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/second_round_label"
+            android:layout_toRightOf="@+id/first_round"
+            android:hint="Second Round"
+            android:inputType="numberDecimal"
+            android:text="5.50" />
+
+        <TextView
+            android:id="@+id/third_round_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/second_round"
+            android:text="201 - above" />
+
+        <EditText
+            android:id="@+id/third_round"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/third_round_label"
+            android:layout_toRightOf="@+id/second_round"
+            android:hint="Third Round"
+            android:inputType="numberDecimal"
+            android:text="5.90" />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/myImage"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/reward"
+        android:onClick="imageClick"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|right">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_margin="20dp"
+
+            android:foregroundGravity="bottom"
+            android:onClick="settingsClick"
+            android:src="@drawable/ic_baseline_settings_24" />
+    </LinearLayout>
+
+</LinearLayout>
