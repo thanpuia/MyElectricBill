@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -14,7 +15,6 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     RelativeLayout settingsLayout;
-    ImageView myImage;
     TextView settingsTextView;
     TextView billAmount;
     EditText billUnit;
@@ -42,12 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
+        getSupportActionBar().hide(); // hide the title bar
         setContentView(R.layout.activity_main);
 
         COUNTER=2;
 
-        myImage = findViewById(R.id.myImage);
         firstRoundEditText = findViewById(R.id.first_round);
         secondRoundEditText = findViewById(R.id.second_round);
         thirdRoundEditText = findViewById(R.id.third_round);
@@ -90,20 +92,11 @@ public class MainActivity extends AppCompatActivity {
 
        userBillAmount = userBillAmount + fixedCharge;
 
-        billAmount.setText("Total Bill= Rs."+String.valueOf(userBillAmount));
+        billAmount.setText(String.valueOf(userBillAmount));
 
     }
 
-    public void imageClick(View view) {
-        int[] images = {
-                R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d,R.drawable.e,R.drawable.f,
-                R.drawable.g,R.drawable.h
-        };
 
-        int rand_int1 = rand.nextInt(7);
-        myImage.setImageResource(images[rand_int1]);
-
-    }
     private void firstRound() {
         userBillAmount = userBillUnit * FIRST_ROUND;
     }
@@ -134,11 +127,9 @@ public class MainActivity extends AppCompatActivity {
         if(COUNTER % 2 ==0){
             settingsTextView.setVisibility(View.VISIBLE);
             settingsLayout.setVisibility(View.VISIBLE);
-            myImage.setVisibility(View.GONE);
         }else{
             settingsTextView.setVisibility(View.GONE);
             settingsLayout.setVisibility(View.GONE);
-            myImage.setVisibility(View.VISIBLE);
         }
         COUNTER++;
     }

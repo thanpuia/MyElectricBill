@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/icoon"
+        android:icon="@drawable/group_8"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/icoon_round"
+        android:roundIcon="@drawable/group_8"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyElectricBill">
         <activity android:name=".MainActivity">
